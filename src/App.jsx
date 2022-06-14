@@ -4,13 +4,6 @@ import { useVirtualizer } from "@tanstack/react-virtual";
 import { useRef } from "react";
 import { css } from "@emotion/react";
 
-/* task : {
-  company :{name, picture}, 
-  details: {applicants, jobType, },
-  selection: {target, status},
-  shifts: {},
- } 
-*/
 function Task({ task }) {
 	return (
 		<div
@@ -21,6 +14,7 @@ function Task({ task }) {
 				justify-content: center;
 				width: 100%;
 				padding: 0.5em 1em;
+				border-bottom: 1px solid lightgrey;
 			`}>
 			<div>{task.company.name}</div>
 			<div>{task.selection.status}</div>
