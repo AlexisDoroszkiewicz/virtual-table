@@ -5,17 +5,20 @@ import { useRef } from "react";
 import { css } from "@emotion/react";
 
 function Task({ task }) {
+	console.log(task);
 	return (
 		<div
 			css={css`
 				display: grid;
 				gap: 1em;
-				grid-template-columns: 2fr 8ch 1fr 1fr 4ch;
+				grid-template-columns: 25px 2fr 8ch 1fr 1fr 4ch;
 				justify-content: center;
+				align-items: center;
 				width: 100%;
 				padding: 0.5em 1em;
 				border-bottom: 1px solid lightgrey;
 			`}>
+			<img src={task.company.pictureURL} width="24" height="24" />
 			<div>{task.company.name}</div>
 			<div>{task.selection.status}</div>
 			<div>{task.selection.target}</div>
@@ -29,7 +32,7 @@ function RowVirtualizerFixed() {
 	const rowVirtualizer = useVirtualizer({
 		count: tasks.length,
 		getScrollElement: () => parentRef.current,
-		estimateSize: () => 35,
+		estimateSize: () => 40,
 		overscan: 5,
 	});
 
@@ -47,11 +50,6 @@ function RowVirtualizerFixed() {
 					{rowVirtualizer.getVirtualItems().map((virtualRow) => (
 						<div
 							key={virtualRow.index}
-							className={
-								virtualRow.index % 2
-									? "ListItemOdd"
-									: "ListItemEven"
-							}
 							style={{
 								position: "absolute",
 								top: 0,
