@@ -2,6 +2,7 @@ import "./App.css";
 import tasks from "./tasks.json";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import { useRef } from "react";
+import { css } from "@emotion/react";
 
 /* task : {
   company :{name, picture}, 
@@ -10,10 +11,25 @@ import { useRef } from "react";
   shifts: {},
  } 
 */
+function Task({ task }) {
+	return (
+		<div
+			css={css`
+				display: flex;
+				align-items: center;
+			`}>
+			<div>{task.company.name}</div>
+			<div>{task.selection.status}</div>
+			<div>{task.selection.target}</div>
+			<div>{task.details.jobType}</div>
+			<div>{task.details.applicants}</div>
+		</div>
+	);
+}
 
 function RowVirtualizerFixed() {
 	const rowVirtualizer = useVirtualizer({
-		count: 1000,
+		count: tasks.length,
 		getScrollElement: () => parentRef.current,
 		estimateSize: () => 35,
 		overscan: 5,
@@ -46,7 +62,7 @@ function RowVirtualizerFixed() {
 								height: `${virtualRow.size}px`,
 								transform: `translateY(${virtualRow.start}px)`,
 							}}>
-							Row {virtualRow.index}
+							<Task task={tasks[virtualRow.index]} />
 						</div>
 					))}
 				</div>
@@ -56,7 +72,6 @@ function RowVirtualizerFixed() {
 }
 
 function App() {
-	console.log(tasks);
 	return (
 		<div className="App">
 			<RowVirtualizerFixed />
