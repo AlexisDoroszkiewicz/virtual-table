@@ -15,8 +15,12 @@ function Task({ task }) {
 	return (
 		<div
 			css={css`
-				display: flex;
-				align-items: center;
+				display: grid;
+				gap: 1em;
+				grid-template-columns: 2fr 8ch 1fr 1fr 4ch;
+				justify-content: center;
+				width: 100%;
+				padding: 0.5em 1em;
 			`}>
 			<div>{task.company.name}</div>
 			<div>{task.selection.status}</div>
