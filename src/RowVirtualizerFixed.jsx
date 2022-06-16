@@ -15,8 +15,6 @@ export default function RowVirtualizerFixed({ filter }) {
 		overscan: 5,
 	});
 
-	console.log(tasks);
-
 	return (
 		<>
 			<div className="List" ref={parentRef}>
