@@ -6,6 +6,7 @@ import useFilter from "./useFilter";
 
 export default function RowVirtualizerFixed({ filter }) {
 	let tasks = useFilter(data, filter);
+	const parentRef = useRef();
 
 	const rowVirtualizer = useVirtualizer({
 		count: tasks?.length,
@@ -13,8 +14,6 @@ export default function RowVirtualizerFixed({ filter }) {
 		estimateSize: () => 40,
 		overscan: 5,
 	});
-
-	const parentRef = useRef();
 
 	console.log(tasks);
 

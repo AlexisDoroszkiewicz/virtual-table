@@ -1,3 +1,4 @@
+import { css } from "@emotion/react";
 import Select from "react-select";
 
 const options = [
@@ -10,11 +11,23 @@ const options = [
 export default function DropDown({ state }) {
 	const [selectedOption, setSelectedOption] = state;
 
+	const handleChange = (e, action) => {
+		if (action?.action != "clear") {
+			setSelectedOption(e.value);
+		} else setSelectedOption(null);
+	};
+
 	return (
-		<div>
+		<div
+			css={css`
+				position: sticky;
+				top: 0;
+				background: white;
+				z-index: 99;
+			`}>
 			<Select
 				defaultValue={selectedOption}
-				onChange={setSelectedOption}
+				onChange={(e, action) => handleChange(e, action)}
 				options={options}
 				isClearable
 			/>

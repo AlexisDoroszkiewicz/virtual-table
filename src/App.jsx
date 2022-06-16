@@ -4,11 +4,11 @@ import RowVirtualizerFixed from "./RowVirtualizerFixed";
 import { useState } from "react";
 
 function App() {
-	const [selectedOption, setSelectedOption] = useState({ value: null });
+	const [selectedOption, setSelectedOption] = useState(null);
 	return (
 		<>
 			<DropDown state={[selectedOption, setSelectedOption]} />
-			<RowVirtualizerFixed filter={selectedOption?.value} />
+			<RowVirtualizerFixed filter={selectedOption} />
 		</>
 	);
 }
