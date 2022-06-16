@@ -16,6 +16,8 @@ export default function RowVirtualizerFixed({ filter }) {
 
 	const parentRef = useRef();
 
+	console.log(tasks);
+
 	return (
 		<>
 			<div className="List" ref={parentRef}>
