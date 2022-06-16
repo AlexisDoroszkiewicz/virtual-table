@@ -5,8 +5,9 @@ import { useRef } from "react";
 import useFilter from "./useFilter";
 
 export default function RowVirtualizerFixed({ filter }) {
-	let tasks = useFilter(data, filter);
 	const parentRef = useRef();
+
+	const tasks = useFilter(data, filter);
 
 	const rowVirtualizer = useVirtualizer({
 		count: tasks?.length,
