@@ -15,12 +15,18 @@ export default function Task({ task }) {
 					border-bottom: 1px solid lightgrey;
 				`}>
 				<img src={task.company.pictureURL} width="24" height="24" />
-				<div>{task.company.name}</div>
+				<div css={charLimit}>{task.company.name}</div>
 				<div>{task.selection.status}</div>
-				<div>{task.selection.target}</div>
-				<div>{task.details.jobType}</div>
+				<div css={charLimit}>{task.selection.target}</div>
+				<div css={charLimit}>{task.details.jobType}</div>
 				<div>{task.details.applicants}</div>
 			</div>
 		</>
 	);
 }
+const charLimit = css`
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 100%;
+`;
