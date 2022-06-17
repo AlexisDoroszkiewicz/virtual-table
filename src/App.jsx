@@ -1,6 +1,6 @@
 import "@styles/App.css";
 import DropDown from "@components/DropDown";
-import RowVirtualizerFixed from "@components/RowVirtualizerFixed";
+import RowVirtualizer from "@components/RowVirtualizer";
 import { useState } from "react";
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
 	return (
 		<>
 			<DropDown state={[selectedOption, setSelectedOption]} />
-			<RowVirtualizerFixed filter={selectedOption} />
+			<RowVirtualizer filter={selectedOption} />
 		</>
 	);
 }

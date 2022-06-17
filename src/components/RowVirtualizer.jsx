@@ -4,7 +4,7 @@ import { useVirtualizer } from "@tanstack/react-virtual";
 import { useRef } from "react";
 import useFilter from "@lib/useFilter";
 
-export default function RowVirtualizerFixed({ filter }) {
+export default function RowVirtualizer({ filter }) {
 	const parentRef = useRef();
 
 	const tasks = useFilter(data, filter);
