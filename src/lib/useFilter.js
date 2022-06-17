@@ -23,27 +23,29 @@ export default function useFilter(data, filter) {
 	}, [data]);
 
 	useEffect(() => {
+		let arr;
 		switch (filter) {
 			case null:
-				setTasks(noClosedStatus);
+				arr = noClosedStatus;
 				break;
 
 			case "new":
-				setTasks(newStatus);
+				arr = newStatus;
 				break;
 
 			case "ongoing":
-				setTasks(ongoingStatus);
+				arr = ongoingStatus;
 				break;
 
 			case "ready":
-				setTasks(readyStatus);
+				arr = readyStatus;
 				break;
 
 			case "closed":
-				setTasks(closedStatus);
+				arr = closedStatus;
 				break;
 		}
+		setTasks(arr);
 	}, [filter]);
 
 	return tasks;
