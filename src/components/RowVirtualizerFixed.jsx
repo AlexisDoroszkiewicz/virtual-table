@@ -1,8 +1,8 @@
-import Task from "./Task";
-import data from "./tasks.json";
+import Task from "@components/Task";
+import data from "@public/tasks.json";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import { useRef } from "react";
-import useFilter from "./useFilter";
+import useFilter from "@lib/useFilter";
 
 export default function RowVirtualizerFixed({ filter }) {
 	const parentRef = useRef();

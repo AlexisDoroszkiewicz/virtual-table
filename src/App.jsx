@@ -1,6 +1,6 @@
-import "./App.css";
-import DropDown from "./DropDown";
-import RowVirtualizerFixed from "./RowVirtualizerFixed";
+import "@styles/App.css";
+import DropDown from "@components/DropDown";
+import RowVirtualizerFixed from "@components/RowVirtualizerFixed";
 import { useState } from "react";
 
 function App() {
