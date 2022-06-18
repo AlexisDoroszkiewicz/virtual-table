@@ -1,52 +1,46 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 
 export default function useFilter(data, filter) {
-	const [tasks, setTasks] = useState();
-	const noClosedStatus = useMemo(() => {
-		return data.filter((item) => item.selection.status != "closed");
+	const filterByStatus = (data, filter) => {
+		return filter == null
+			? data.filter((item) => item.selection.status != "closed")
+			: data.filter((item) => item.selection.status == filter);
+	};
+
+	const defaultStatus = useMemo(() => {
+		return filterByStatus(data, null);
 	}, [data]);
 
 	const newStatus = useMemo(() => {
-		return data.filter((item) => item.selection.status == "new");
+		return filterByStatus(data, "new");
 	}, [data]);
 
 	const ongoingStatus = useMemo(() => {
-		return data.filter((item) => item.selection.status == "ongoing");
+		return filterByStatus(data, "ongoing");
 	}, [data]);
 
 	const readyStatus = useMemo(() => {
-		return data.filter((item) => item.selection.status == "ready");
+		return filterByStatus(data, "ready");
 	}, [data]);
 
 	const closedStatus = useMemo(() => {
-		return data.filter((item) => item.selection.status == "closed");
+		return filterByStatus(data, "closed");
 	}, [data]);
 
-	useEffect(() => {
-		let arr;
+	const switchResult = (filter) => {
 		switch (filter) {
 			case null:
-				arr = noClosedStatus;
-				break;
-
+				return defaultStatus;
 			case "new":
-				arr = newStatus;
-				break;
-
+				return newStatus;
 			case "ongoing":
-				arr = ongoingStatus;
-				break;
-
+				return ongoingStatus;
 			case "ready":
-				arr = readyStatus;
-				break;
-
+				return readyStatus;
 			case "closed":
-				arr = closedStatus;
-				break;
+				return closedStatus;
 		}
-		setTasks(arr);
-	}, [filter]);
+	};
 
-	return tasks;
+	return switchResult(filter);
 }
