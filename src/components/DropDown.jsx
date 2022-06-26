@@ -14,7 +14,7 @@ export default function DropDown({ state }) {
 	const handleChange = (e, action) => {
 		if (action?.action != "clear") {
 			setSelectedOption(e.value);
-		} else setSelectedOption(null);
+		} else setSelectedOption("default");
 	};
 
 	return (

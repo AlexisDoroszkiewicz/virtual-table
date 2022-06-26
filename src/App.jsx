@@ -4,7 +4,7 @@ import RowVirtualizer from "@components/RowVirtualizer";
 import { useState } from "react";
 
 function App() {
-	const [selectedOption, setSelectedOption] = useState(null);
+	const [selectedOption, setSelectedOption] = useState("default");
 	return (
 		<>
 			<DropDown state={[selectedOption, setSelectedOption]} />
