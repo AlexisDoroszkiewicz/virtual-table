@@ -25,7 +25,7 @@ export default function RowVirtualizer({ filter }) {
 						width: "100%",
 						position: "relative",
 					}}>
-					{rowVirtualizer.measurementsCache.map((virtualRow) => {
+					{rowVirtualizer.getVirtualItems().map((virtualRow) => {
 						return (
 							<div
 								key={virtualRow.index}
