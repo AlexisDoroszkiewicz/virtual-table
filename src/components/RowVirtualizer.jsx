@@ -1,6 +1,6 @@
 import Task from "@components/Task";
 import data from "@public/tasks.json";
-import { useVirtualizer } from "@tanstack/react-virtual";
+import { useWindowVirtualizer } from "@tanstack/react-virtual";
 import { useRef } from "react";
 import useFilter from "@lib/useFilter";
 
@@ -9,16 +9,15 @@ export default function RowVirtualizer({ filter }) {
 
 	const tasks = useFilter(data, filter);
 
-	const rowVirtualizer = useVirtualizer({
+	const rowVirtualizer = useWindowVirtualizer({
 		count: tasks?.length,
-		getScrollElement: () => parentRef.current,
 		estimateSize: () => 40,
 		overscan: 5,
 	});
 
 	return (
 		<>
-			<div className="List" ref={parentRef}>
+			<div ref={parentRef} className="List">
 				<div
 					style={{
 						height: `${rowVirtualizer.getTotalSize()}px`,
